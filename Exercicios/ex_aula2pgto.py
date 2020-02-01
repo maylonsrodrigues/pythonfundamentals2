@@ -32,10 +32,10 @@ print('Sindicato: ', sind)
 fgts = (11 / 100) * salariobruto
 print('FGTS: ', fgts)
 
-totdesc = salariobrutoir + sind + fgts
+totdesc = salariobrutoir + sind
 print ('total de descontos ', totdesc)
 
-salliquido = salariobrutoir - sind - fgts
+salliquido = salariobruto - totdesc
 print ('Salario liquido', salliquido)
 
 print ('-------------------------------------------/n')
