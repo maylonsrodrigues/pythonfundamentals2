@@ -88,3 +88,26 @@
 
 # print(n_par)
 
+class Passaro():
+
+    def __init__(self):
+        self.asas = 2
+        self.bico = True
+        self.penas = True
+
+    def voar(self):
+        print('Voando...')
+
+    def pousar(self):
+        print('Pousando...')
+
+    def dormir(self):
+        print('Dormindo...')
+
+sabiá = Passaro()
+
+
+sabiá.voar()
+sabiá.pousar()
+sabiá.dormir()
+print(sabiá.bico)
