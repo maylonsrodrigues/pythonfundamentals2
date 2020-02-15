@@ -1,30 +1,48 @@
+# # import psycopg2
+
+# # con = psycopg2._connect("host=localhost dbname=projeto user=admin password=4linux") 
+
+# # cur = con.cursor()
+
+# # cur.execute("insert into scripts(nome,conteudo) values ('teste.py', 'teste de conexão ao banco')")
+
+# # con.commit()
+
 # import psycopg2
 
-# con = psycopg2._connect("host=localhost dbname=projeto user=admin password=4linux") 
+# try:
+#     con = psycopg2._connect("host=localhost dbname=projeto user=admin password=4linux") 
 
-# cur = con.cursor()
+#     cur = con.cursor()
 
-# cur.execute("insert into scripts(nome,conteudo) values ('teste.py', 'teste de conexão ao banco')")
+#     cur.execute("insert into scripts(nome,conteudo) values ('testetry.py', 'teste de try')")
 
-# con.commit()
+#     con.commit()
+# except Exception as e:
+#     print('Erro: {}'.format(e))
+#     print('Fazendo rollback')
+#     con.rollback()
 
-import psycopg2
+# finally:
+#     print('Finalizando conexão com o banco')
+#     cur.close()
+#     con.close()
 
-try:
-    con = psycopg2._connect("host=localhost dbname=projeto user=admin password=4linux") 
 
-    cur = con.cursor()
+from pymongo import MongoClient
 
-    cur.execute("insert into scripts(nome,conteudo) values ('testetry.py', 'teste de try')")
+client = MongoClient('localhost')
 
-    con.commit()
-except Exception as e:
-    print('Erro: {}'.format(e))
-    print('Fazendo rollback')
-    con.rollback()
+db = client['dexterops']
 
-finally:
-    print('Finalizando conexão com o banco')
-    cur.close()
-    con.close()
+def inserir_dados():
+    try:
+        db.fila.insert({"_id":1, "empresa":"4linux",
+        "cursos": [{"nome":"Python Fundamentals",
+                    "carga horaria":40},
+                    
+                  {"nome":"Linux Fundamentals",
+                   "carga horaria":40}]})
     
+    except Exception as e:
+        print('erro: {}'.format(e))
