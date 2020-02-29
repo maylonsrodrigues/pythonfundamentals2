@@ -10,3 +10,4 @@ def test_soma(context, num1, num2):
 @step('o resultado deve ser "{esperado}"')
 def test_soma_result(context, esperado):
     assert context.r_soma == int(esperado), "teste falhou"
+
